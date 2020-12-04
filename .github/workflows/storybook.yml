@@ -33,6 +33,6 @@ jobs:
           yarn run storybook:build
           git config --global user.email "attila.kling@gmail.com"
           git config --global user.name "Attila Kling"
-          git add docs
+          git add docs/\*
           git commit -m "Automatic storybook build for ${{ github.sha }}"
           git push
