@@ -26,8 +26,13 @@ jobs:
           persist-credentials: false
 
       - name: build storybook
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           yarn
           yarn run storybook:build
+          git config --global user.email "attila.kling@gmail.com"
+          git config --global user.name "Attila Kling"
+          git add docs
           git commit -m "Automatic storybook build for ${{ github.sha }}"
           git push
