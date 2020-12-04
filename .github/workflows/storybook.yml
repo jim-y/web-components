@@ -1,0 +1,7 @@
+- name: build storybook
+        run: |
+          git checkout gh-pages
+          npm ci
+          npm run storybook:build
+          git commit -m "Automatic storybook build for ${{ github.sha }}"
+          git push origin gh-pages
