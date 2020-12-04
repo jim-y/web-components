@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Build and deploy storybook
+name: Sync gh-pages with main
 
 # Controls when the action will run. 
 on:
@@ -15,7 +15,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  gh-pages:
+  sync-gh-pages:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -32,11 +32,3 @@ jobs:
           type: now
           target_branch: gh-pages
           github_token: ${{ github.token }}
-          
-      - name: build storybook
-        run: |
-          git checkout gh-pages
-          npm ci
-          npm run storybook:build
-          git commit -m "Automatic storybook build for ${{ github.sha }}"
-          git push origin gh-pages
