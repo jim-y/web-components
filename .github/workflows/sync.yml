@@ -1,0 +1,25 @@
+name: Sync
+
+on:
+  push:
+    branches: [main]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  sync-gh-pages:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Merge main to gh-pages
+        uses: devmasx/merge-branch@v1.3.1
+        with:
+          type: now
+          target_branch: gh-pages
+          github_token: ${{ github.token }}
