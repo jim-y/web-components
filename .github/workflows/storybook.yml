@@ -1,20 +1,36 @@
-name: Storybook
+name: Sync & Build Storybook
 
 on:
   push:
-    branches: [gh-pages]
+    branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
-  build:
+  sync:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
+          persist-credentials: false
+
+      - name: Merge main to gh-pages
+        uses: devmasx/merge-branch@v1.3.1
+        with:
+          type: now
+          target_branch: gh-pages
+          github_token: ${{ github.token }}
+
+  build:
+    needs: sync
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: gh-pages
           persist-credentials: false
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
 
@@ -35,8 +51,8 @@ jobs:
           git add docs/\*
           git commit -m "Automatic storybook build for ${{ github.sha }}"
 
-      - name: Push changes
+      - name: Push changes to gh-pages
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          branch: gh-pages
