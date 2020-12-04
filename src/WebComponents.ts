@@ -9,7 +9,7 @@ export class WebComponents extends LitElement {
     }
   `;
 
-  @property({ type: String }) title = 'Hey there 👋';
+  @property({ type: String }) title = 'Hey there 👋 pal';
 
   @property({ type: Number }) counter = 5;
 
