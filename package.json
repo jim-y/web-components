@@ -6,6 +6,16 @@
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "keywords": [
+    "web-components",
+    "lit-element",
+    "lit-html"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jim-y/web-components.git"
+  },
+  "homepage": "https://jim-y.github.io/web-components/",
   "scripts": {
     "start": "concurrently --kill-others --names tsc,web-dev-server \"npm run tsc:watch\" \"web-dev-server --app-index demo/index.html --node-resolve --open --watch\"",
     "tsc:watch": "tsc --watch",
