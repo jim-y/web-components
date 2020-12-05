@@ -1,1 +1,1 @@
-export { WebComponents } from './src/WebComponents.js';
+export { Button } from './src/button/Button';

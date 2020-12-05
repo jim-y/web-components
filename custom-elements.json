@@ -2,20 +2,20 @@
   "version": 2,
   "tags": [
     {
-      "name": "web-components",
-      "description": "A component with a title and an action counter",
+      "name": "j-button",
+      "description": "Button component",
       "properties": [
         {
-          "name": "title",
+          "name": "color",
           "type": "String",
-          "description": "The title of your component",
-          "default": "Hey there"
+          "description": "The color of the button",
+          "default": "primary"
         },
         {
-          "name": "counter",
-          "type": "Number",
-          "description": "An action counter",
-          "default": 0
+          "name": "variant",
+          "type": "String",
+          "description": "The button variant",
+          "default": "raised"
         }
       ],
       "events": [],
