@@ -1,6 +1,6 @@
 {
   "name": "@jim-y/web-components",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Webcomponent web-components following open-wc recommendations",
   "author": "Attila Kling (attila.kling@gmail.com)",
   "license": "MIT",
